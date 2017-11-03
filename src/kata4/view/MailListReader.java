@@ -18,7 +18,6 @@ public class MailListReader {
                 mailList.add(mail);
             }
         }
-        //Hay que poner los try 
         reader.close();
         return mailList;
     }

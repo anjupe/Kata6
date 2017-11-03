@@ -8,13 +8,33 @@ import kata4.view.MailHistogramBuilder;
 import kata4.view.MailListReader;
 
 public class Kata4 {
-
-    public static void main(String[] args) throws IOException {
-        String filename = "C:\\Users\\Entrar\\Documents\\NetBeansProjects\\Kata4\\emailsfile.txt";
-        List<String> mailList = MailListReader.read(filename);
-        Histogram<String> histogram = MailHistogramBuilder.build(mailList);
-        HistogramDisplay histoDisplay = new HistogramDisplay(histogram);
-        histoDisplay.execute();
+    
+    private List<String> mailList;
+    private Histogram<String> histogram;
+    
+    public static void main(String[] args) throws IOException {     
+        Kata4 kata = new Kata4();
+        kata.execute(); 
     }
     
+    private void execute() throws IOException{
+        input();
+        process();
+        output();
+    }
+    
+    private void input() throws IOException{
+        String filename = "C:\\Users\\Experimentos\\Documents\\NetBeansProjects\\Kata4\\emailsfile.txt";
+        mailList = MailListReader.read(filename);
+    }
+    
+    private void process(){
+        histogram = MailHistogramBuilder.build(mailList);
+    }
+    
+    private void output(){
+        HistogramDisplay histoDisplay = new HistogramDisplay(histogram);
+        histoDisplay.execute();
+    }    
 }
+
