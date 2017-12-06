@@ -13,10 +13,12 @@ import org.jfree.ui.ApplicationFrame;
 public class HistogramDisplay<T> extends ApplicationFrame{
  
     private final Histogram<T> histogram;
+    private final String nameEjeX;
      
-    public HistogramDisplay(Histogram<T> histogram) { 
-         super("Histograma de emails");
+    public HistogramDisplay(Histogram<T> histogram, String nameEjeX) { 
+         super("Histograma");
          this.histogram = histogram;
+         this.nameEjeX = nameEjeX;
          setContentPane(createPanel());
          pack();
      }
@@ -32,7 +34,7 @@ public class HistogramDisplay<T> extends ApplicationFrame{
      }
      
      private JFreeChart createChart(DefaultCategoryDataset dataSet){
-         JFreeChart chart = ChartFactory.createBarChart("Histograma JFreeChart", "Dominios email",
+         JFreeChart chart = ChartFactory.createBarChart("Histograma JFreeChart", nameEjeX,
                                   "Nº de emails", dataSet, PlotOrientation.VERTICAL, false, true, rootPaneCheckingEnabled);
          return chart;
      }
